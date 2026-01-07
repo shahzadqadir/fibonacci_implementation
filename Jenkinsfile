@@ -1,9 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage ("build") {
+        stage ("pre-build") {
             steps {
-                sh "echo building application."
+                sh "pip install pipenv"
+                sh "pipenv install --system"
             }
         }
         stage ("test") {
