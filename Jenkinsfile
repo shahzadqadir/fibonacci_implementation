@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ("pre-build") {
             steps {
-                sh "pip install pipenv"
+                sh "pip install pipenv --break-system-packages"
                 sh "pipenv install --system"
             }
         }
