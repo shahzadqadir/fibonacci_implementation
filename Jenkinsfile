@@ -18,7 +18,9 @@ pipeline {
             steps {
                 script {
                     sh "git checkout main"
+                    sh "git pull"
                     sh "git merge main origin/dev"
+                    sh "git push origin main"
                 }
             }
         }
