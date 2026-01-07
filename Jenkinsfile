@@ -1,19 +1,18 @@
 pipeline {
     agent any
     stages {
-        stage ("pre-build") {
+        stage ("setup") {
             steps {
-                sh "python3 -m venv .venv"
-                sh "source .venv/bin/activate"
-                sh "pip install -r requirements.txt"
+                sh '''
+                python3 -m venv .venv
+                .venv/bin/python -m pip install -r requirements.txt
+                '''
             }
         }
         stage ("test") {
             steps {
-                script {
-                    sh "python3 -m pytest ."
-                    echo "Tests successful."
-                }
+                sh ".venv/bin/python -m pytest ."
+
             }
         }
     }
