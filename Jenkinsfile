@@ -8,7 +8,10 @@ pipeline {
         }
         stage ("test") {
             steps {
-                sh "pytest ."
+                script {
+                    sh "pytest ."
+                    echo "Tests successful."
+                }
             }
         }
     }
