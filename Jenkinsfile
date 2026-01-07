@@ -12,7 +12,14 @@ pipeline {
         stage ("test") {
             steps {
                 sh ".venv/bin/python -m pytest ."
-
+            }
+        }
+        stage ("deploy") {
+            steps {
+                script {
+                    sh "git checkout main"
+                    sh "git merge main dev"
+                }
             }
         }
     }
