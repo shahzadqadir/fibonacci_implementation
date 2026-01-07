@@ -3,8 +3,9 @@ pipeline {
     stages {
         stage ("pre-build") {
             steps {
-                sh "pip install -r requirements.txt --break-system-packages"
-                sh "export PATH=$PATH:/var/jenkins_home/.local/bin"
+                sh "python3 -m venv .venv"
+                sh "source .venv/bin/activate"
+                sh "pip install -r requirements.txt"
             }
         }
         stage ("test") {
